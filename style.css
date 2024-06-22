@@ -22,6 +22,7 @@ body {
     width: 15em;
     height: 20em; 
     border: 5px solid black;
+    box-shadow: 10px 10px 5px  rgb(182, 185, 185);
     border-radius: 20px;
     background-color: whitesmoke;
     padding: 15px;
@@ -30,6 +31,8 @@ body {
 #cart {
     width: 4em;
     height: 4em;
+    box-shadow: 2px 3px 5px rgb(182, 185, 185);
+    border-radius: 20px;
 }
 
 #add-btn-field {
@@ -55,6 +58,8 @@ body {
 
 #add-button {
     background-color: rgba(130, 18, 18, 0.848);
+    box-shadow: 2px 10px 5px rgb(182, 185, 185);
+
     border: none;
     height: 2em;
     width: 15em;
