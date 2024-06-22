@@ -18,13 +18,13 @@ const shoppingItemList = document.querySelector('#shopping-item-list');
 
 const addToCart = (e) => {
     e.preventDefault();
-    console.log(inputField.value);  
     const shoppingItem = document.createElement('p');
     shoppingItem.setAttribute('id','shoppingItemP');
     shoppingItemList.appendChild(shoppingItem);
     shoppingItem.innerText = inputField.value;  
     push(shoppingListInDB , inputField.value)
     inputField.value = ''; 
+    
 
 }
 
@@ -32,10 +32,13 @@ inputForm.addEventListener('submit', addToCart);
 
 onValue(shoppingListInDB, function(snapshot){
     let ArrayList = Object.values(snapshot.val());
-    console.log(ArrayList);
+    shoppingItemList.innerHTML = '';
     for(let i=0; i< ArrayList.length; i++){
         console.log(ArrayList[i]);
-        
+        const shoppingItem = document.createElement('p');
+        shoppingItem.setAttribute('id','shoppingItemP');
+        shoppingItemList.appendChild(shoppingItem);
+        shoppingItem.innerText = ArrayList[i];  
     }
 })
 
