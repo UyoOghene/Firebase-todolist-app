@@ -7,7 +7,7 @@ const appSettings = {
 
 const app = initializeApp(appSettings);
 const dataBase = getDatabase(app);
-const shoppingListInDB = ref(dataBase, "shoppingList")
+const shoppingListInDB = ref(dataBase, "shoppingList");
 
 
 const inputField = document.querySelector('#input-field');
@@ -22,10 +22,8 @@ const addToCart = (e) => {
     shoppingItem.setAttribute('id','shoppingItemP');
     shoppingItemList.appendChild(shoppingItem);
     shoppingItem.innerText = inputField.value;  
-    push(shoppingListInDB , inputField.value)
-    inputField.value = ''; 
-    
-  
+    push(shoppingListInDB , inputField.value);
+    inputField.value = '';  
 }
 
 inputForm.addEventListener('submit', addToCart);
@@ -51,6 +49,7 @@ onValue(shoppingListInDB, function(snapshot){
             shoppingItem.style.textDecoration = 'line-through';
             console.log('remove');
         })
+
         shoppingItem.addEventListener('dblclick',function(){
             remove(exactlocation);
             console.log('remove');
