@@ -32,8 +32,6 @@ onValue(shoppingListInDB, function(snapshot){
     let ArrayList = Object.values(snapshot.val());
     let items = snapshot.val();
     let itemIdList = Object.keys(items);
-    console.log(items);
-    console.log(itemIdList);
  
     shoppingItemList.innerHTML = '';
     for(let i=0; i< ArrayList.length; i++){
@@ -47,12 +45,10 @@ onValue(shoppingListInDB, function(snapshot){
 
         shoppingItem.addEventListener('click',function(){
             shoppingItem.style.textDecoration = 'line-through';
-            console.log('remove');
         })
 
         shoppingItem.addEventListener('dblclick',function(){
             remove(exactlocation);
-            console.log('remove');
         })
     }
 })
