@@ -34,7 +34,6 @@ onValue(shoppingListInDB, function(snapshot){
     let ArrayList = Object.values(snapshot.val());
     shoppingItemList.innerHTML = '';
     for(let i=0; i< ArrayList.length; i++){
-        console.log(ArrayList[i]);
         const shoppingItem = document.createElement('p');
         shoppingItem.setAttribute('id','shoppingItemP');
         shoppingItemList.appendChild(shoppingItem);
