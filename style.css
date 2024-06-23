@@ -4,6 +4,7 @@ body {
     font-family: Roboto, sans-serif;
     height: 100vh; 
     overflow: hidden; 
+    user-select: none;
 }
 
 #container {
@@ -35,6 +36,7 @@ body {
     border-radius: 20px;
 }
 
+
 #add-btn-field {
     display: flex;
     flex-direction: column;
@@ -43,6 +45,11 @@ body {
     margin: 5px;
 
 }
+
+#input-field:hover {
+    background-color: aliceblue;
+}
+    
 
 #input-field {
     display: flex;
@@ -56,6 +63,10 @@ body {
     text-align: center;
     border: none;
 }
+#add-button:hover {
+    background-color: rgb(215, 58, 100);
+    }
+    
 
 #add-button {
     background-color: rgba(130, 18, 18, 0.848);
