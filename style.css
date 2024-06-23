@@ -92,5 +92,6 @@ body {
 
 #shoppingItemP:hover {
     background-color: rgba(150, 160, 213, 0.408);
+    cursor: pointer;
 }
 
