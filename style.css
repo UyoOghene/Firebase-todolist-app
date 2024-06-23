@@ -89,3 +89,8 @@ body {
     box-shadow: 0px 1px 5px rgb(0, 0 ,0 , 0.2);
 
 }
+
+#shoppingItemP:hover {
+    background-color: rgba(150, 160, 213, 0.408);
+}
+
