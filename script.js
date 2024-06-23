@@ -29,27 +29,33 @@ const addToCart = (e) => {
 inputForm.addEventListener('submit', addToCart);
 
 onValue(shoppingListInDB, function(snapshot){
-    let ArrayList = Object.values(snapshot.val());
-    let items = snapshot.val();
-    let itemIdList = Object.keys(items);
- 
-    shoppingItemList.innerHTML = '';
-    for(let i=0; i< ArrayList.length; i++){
-        const shoppingItem = document.createElement('p');
-        shoppingItem.setAttribute('id','shoppingItemP');
-        shoppingItemList.appendChild(shoppingItem);
-        shoppingItem.innerText = ArrayList[i]; 
+    if(snapshot.exists()){
+        let ArrayList = Object.values(snapshot.val());
+        let items = snapshot.val();
+        let itemIdList = Object.keys(items);
 
-        const itemId = itemIdList[i];
-        let exactlocation = ref(dataBase, `shoppingList/${itemId}`);
+    
+        shoppingItemList.innerHTML = '';
+        
+        for(let i=0; i< ArrayList.length; i++){
+            const shoppingItem = document.createElement('p');
+            shoppingItem.setAttribute('id','shoppingItemP');
+            shoppingItemList.appendChild(shoppingItem);
+            shoppingItem.innerText = ArrayList[i]; 
 
-        shoppingItem.addEventListener('click',function(){
-            shoppingItem.style.textDecoration = 'line-through';
-        })
+            const itemId = itemIdList[i];
+            let exactlocation = ref(dataBase, `shoppingList/${itemId}`);
 
-        shoppingItem.addEventListener('dblclick',function(){
-            remove(exactlocation);
-        })
+            shoppingItem.addEventListener('click',function(){
+                shoppingItem.style.textDecoration = 'line-through';
+            })
+
+            shoppingItem.addEventListener('dblclick',function(){
+                remove(exactlocation);
+            })
+        }
+    }else{
+       shoppingItemList.innerHTML = 'No item on the list yet';
     }
 })
 
