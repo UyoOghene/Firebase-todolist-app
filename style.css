@@ -13,7 +13,8 @@ body {
     align-items: center;
     width: 100vw; 
     height: 100vh; 
-    background-color: rgb(249, 209, 249);
+    background-color: #f0dbec;
+
 
 }
 
@@ -26,7 +27,8 @@ body {
     height: 20em; 
     box-shadow: 10px 10px 5px  rgb(182, 185, 185);
     border-radius: 20px;
-    background-color: rgb(247, 222, 243);
+    background-color: #d1c3f0;
+
     padding: 15px;
 }
 
