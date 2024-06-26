@@ -18,12 +18,26 @@ const shoppingItemList = document.querySelector('#shopping-item-list');
 
 const addToCart = (e) => {
     e.preventDefault();
-    const shoppingItem = document.createElement('p');
-    shoppingItem.setAttribute('id','shoppingItemP');
-    shoppingItemList.appendChild(shoppingItem);
-    shoppingItem.innerText = inputField.value;  
-    push(shoppingListInDB , inputField.value);
-    inputField.value = '';  
+    let name = prompt('Enter your name');
+    let item = inputField.value;
+    let user = name;
+    const d = new Date();
+    const date = d.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+
+    console.log(name)
+    if(name != null){
+        const shoppingItem = document.createElement('p');
+        shoppingItem.setAttribute('id','shoppingItemP');
+        shoppingItemList.appendChild(shoppingItem);
+        shoppingItem.textContent = `${item} - ${user}-${date}`; 
+
+        push(shoppingListInDB ,(item +'-' + name +'-' + date));
+        inputField.value = '';  
+    }
 }
 
 inputForm.addEventListener('submit', addToCart);
