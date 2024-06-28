@@ -19,6 +19,7 @@ const firebaseConfig = {
   const loginBtn = document.querySelector('#login');
   const username = document.querySelector('#username');
   const password = document.querySelector('#password');
+  const namebox = document.querySelector('#namebox');
 
   
   googleBtn.addEventListener('click', () => {
@@ -40,7 +41,9 @@ const firebaseConfig = {
 
     if(username.value === 'admin' && password.value === 'pass'){
       window.location.href= './todlist.html';
-      console.log(form.password.value)  ;
+      namebox.innerHTML = username.value;
+
+
 
     } else {
       alert('wrong');

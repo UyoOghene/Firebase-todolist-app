@@ -17,6 +17,15 @@ body {
 
 
 }
+#namebox {
+    display: flex;
+    align-items: center;
+    width: 2em; 
+    height: 2em; 
+    background-color: #f0dbec;
+    border: 2px solid black;
+   
+}
 
 #card {
     display: flex;

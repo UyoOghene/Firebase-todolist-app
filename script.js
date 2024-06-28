@@ -15,6 +15,8 @@ const addButton = document.querySelector('#add-button');
 const inputForm = document.querySelector('#add-btn-field');
 const shoppingItemList = document.querySelector('#shopping-item-list');
 
+
+
 const addToCart = (e) => {
     e.preventDefault();
     let name = prompt('Enter your name');
