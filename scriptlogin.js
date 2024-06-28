@@ -16,6 +16,10 @@ const firebaseConfig = {
   const provider = new GoogleAuthProvider();
   
   const googleBtn = document.querySelector('#googleBtn');
+  const loginBtn = document.querySelector('#login');
+  const username = document.querySelector('#username');
+  const password = document.querySelector('#password');
+
   
   googleBtn.addEventListener('click', () => {
     signInWithPopup(auth, provider)
@@ -28,4 +32,20 @@ const firebaseConfig = {
         console.error(error.code, error.message);
       });
   });
+
   
+
+  function login(e){
+    e.preventDefault();
+
+    if(username.value === 'admin' && password.value === 'pass'){
+      window.location.href= './todlist.html';
+      console.log(form.password.value)  ;
+
+    } else {
+      alert('wrong');
+    }
+
+  }
+
+  loginBtn.addEventListener('click',login);
