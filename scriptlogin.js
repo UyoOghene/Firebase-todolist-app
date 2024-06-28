@@ -27,7 +27,7 @@ const firebaseConfig = {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        window.location.href = './todlist.html';
+        window.location.href = '../todlist.html';
       })
       .catch((error) => {
         console.error(error.code, error.message);
