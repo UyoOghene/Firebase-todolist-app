@@ -1,20 +1,19 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-import { getDatabase, ref , onValue , push , remove} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+import { getDatabase, ref, onValue, push, remove, } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
 const appSettings = {
     databaseURL: "https://playground-f6f18-default-rtdb.firebaseio.com/"
-}
+};
 
 const app = initializeApp(appSettings);
 const dataBase = getDatabase(app);
 const shoppingListInDB = ref(dataBase, "shoppingList");
 
-
 const inputField = document.querySelector('#input-field');
 const addButton = document.querySelector('#add-button');
 const inputForm = document.querySelector('#add-btn-field');
 const shoppingItemList = document.querySelector('#shopping-item-list');
-
 
 const addToCart = (e) => {
     e.preventDefault();
@@ -28,71 +27,53 @@ const addToCart = (e) => {
         day: '2-digit'
     });
 
-    console.log(name)
-    if(name != null){
-        const shoppingItem = document.createElement('p');
-        shoppingItem.setAttribute('id','shoppingItemP');
-        shoppingItemList.appendChild(shoppingItem);
-        shoppingItem.textContent = `${item} - ${user}-${date}`; 
-
-        push(shoppingListInDB ,(item +'-' + name +'-' + date));
+    if(name !== null){
+        push(shoppingListInDB, { item, user, date });
         inputField.value = '';  
     }
-}
+};
 
 inputForm.addEventListener('submit', addToCart);
 
 onValue(shoppingListInDB, function(snapshot){
     if(snapshot.exists()){
-        let ArrayList = Object.values(snapshot.val());
         let items = snapshot.val();
-        let itemIdList = Object.keys(items);
-
-    
         shoppingItemList.innerHTML = '';
-        
-        for(let i=0; i< ArrayList.length; i++){
-            const shoppingItem = document.createElement('p');
-            shoppingItem.setAttribute('id','shoppingItemP');
-            shoppingItemList.appendChild(shoppingItem);
-            shoppingItem.innerText = ArrayList[i]; 
 
-            const itemId = itemIdList[i];
-            let exactlocation = ref(dataBase, `shoppingList/${itemId}`);
+        const table = document.createElement('table');
+        table.setAttribute('border', '1');
+        shoppingItemList.appendChild(table);
 
-            shoppingItem.addEventListener('click',function(){
-                shoppingItem.style.textDecoration = 'line-through';
-            })
+        const headerRow = document.createElement('tr');
+        const headers = ['Item', 'User', 'Date'];
+        headers.forEach(headerText => {
+            const th = document.createElement('th');
+            th.textContent = headerText;
+            headerRow.appendChild(th);
+        });
+        table.appendChild(headerRow);
 
-            shoppingItem.addEventListener('dblclick',function(){
-                remove(exactlocation);
-            })
-        }
-    }else{
-       shoppingItemList.innerHTML = 'No item on the list yet';
+        Object.keys(items).forEach(key => {
+            const { item, user, date } = items[key];
+            const row = document.createElement('tr');
+            table.appendChild(row);
+
+            [item, user, date].forEach(text => {
+                const td = document.createElement('td');
+                td.textContent = text;
+                row.appendChild(td);
+            });
+
+            row.addEventListener('click', function() {
+                row.style.textDecoration = 'line-through';
+            });
+
+            row.addEventListener('dblclick', function() {
+                const exactLocation = ref(dataBase, `shoppingList/${key}`);
+                remove(exactLocation);
+            });
+        });
+    } else {
+        shoppingItemList.innerHTML = 'No item on the list yet';
     }
-})
-
-// // challenge (object to array)
-// // 1:Create a variable called scrimbausersemail and use one of the object methods to set it to an array with the values
-// // 2: Create a variable called scrimba userids ans use one of the Object methods to set it equal to an array with the keys
-// // 3: create a let variable called scrimbauserEntries and use one of the object methods to set it equal to an arrahy with both the keys and values
-
-// // 1
-// // let scrimbaUsers = {
-// //     'uyo' : "uyo@gmail.com",
-// //     'james' : "james@yahoo.com",
-// //     'kaka' : "kaka@outlook.com"
-// // };
-
-// // let scrimbausersemail = Object.values(scrimbaUsers);
-// // console.log(scrimbausersemail);
-
-// // // 2
-// // let scrimbaUsersIds = Object.keys(scrimbaUsers);
-// // console.log(scrimbaUsersIds);
-
-// // // 3
-// // let scrimbauserEntries = Object.entries(scrimbaUsers);
-// // console.log(scrimbauserEntries);
-
+});
