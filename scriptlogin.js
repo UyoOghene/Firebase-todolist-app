@@ -2,8 +2,8 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstati
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-      authDomain: "login-8405c.firebaseapp.com",
+  apiKey: env.FIREBASE_API_KEY,
+    authDomain: "login-8405c.firebaseapp.com",
     projectId: "login-8405c",
     storageBucket: "login-8405c.appspot.com",
     messagingSenderId: "264742098294",
