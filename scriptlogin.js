@@ -47,8 +47,6 @@ const firebaseConfig = {
       window.location.href= './todlist.html';
       namebox.innerHTML = username.value;
 
-
-
     } else {
       alert('wrong');
     }
