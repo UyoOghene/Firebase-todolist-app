@@ -2,8 +2,8 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstati
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 
 const firebaseConfig = {
-    // apiKey: "AIzaSyB7OkfM-p0VaB8m9c7dBExS9ViR-DmgMX0",
-    authDomain: "login-8405c.firebaseapp.com",
+  apiKey: process.env.FIREBASE_API_KEY,
+      authDomain: "login-8405c.firebaseapp.com",
     projectId: "login-8405c",
     storageBucket: "login-8405c.appspot.com",
     messagingSenderId: "264742098294",
@@ -39,7 +39,7 @@ const firebaseConfig = {
   function login(e){
     e.preventDefault();
 
-    if(username.value === 'admin' && password.value === 'pass'){
+    if(username.value !=='' && password.value !== ''){
       window.location.href= './todlist.html';
       namebox.innerHTML = username.value;
 
