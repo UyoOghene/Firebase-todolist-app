@@ -40,17 +40,22 @@ const firebaseConfig = {
 
   
 
-  function login(e){
+  function login(e) {
     e.preventDefault();
 
-    if(username.value !=='' && password.value !== ''){
-      window.location.href= './todlist.html';
-      namebox.innerHTML = username.value;
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username !== '' && password !== '') {
+        localStorage.setItem('username', username);
+        window.location.href = './todolist.html';
+        let userNameretieved = localStorage.getItem('username');
+        namebox.innerHTML = userNameretieved;
 
     } else {
-      alert('wrong');
+        alert('Please enter a valid username and password');
     }
+}
 
-  }
 
   loginBtn.addEventListener('click',login);

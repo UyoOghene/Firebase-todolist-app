@@ -38,6 +38,9 @@ const addToCart = (e) => {
 inputForm.addEventListener('submit', addToCart);
 
 onValue(shoppingListInDB, function(snapshot){
+    let userNameretieved = localStorage.getItem('username');
+    namebox.innerHTML = userNameretieved;
+
     if(snapshot.exists()){
         let items = snapshot.val();
         shoppingItemList.innerHTML = '';
