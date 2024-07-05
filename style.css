@@ -11,20 +11,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 100vw; 
     height: 100vh; 
     background-color: #f0dbec;
-
-
 }
+
 #namebox {
     display: flex;
+    text-align: center;
     align-items: center;
-    width: 2em; 
-    height: 2em; 
+    justify-content: center;
+    min-width: 5em;
+    width: fit-content; 
+    height: 1em; 
     background-color: #f0dbec;
     border: 2px solid black;
-   
+    border-radius: 20px;
+    padding: 5px;
+    font-size: 15px; 
+}
+
+#logoutBtn{
+    background-color: rgb(215, 58, 100);
+    border-radius: 20px;
+
 }
 
 #card {
@@ -37,7 +48,6 @@ body {
     box-shadow: 10px 10px 5px  rgb(182, 185, 185);
     border-radius: 20px;
     background-color: #d1c3f0;
-
     padding: 15px;
 }
 

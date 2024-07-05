@@ -31,7 +31,10 @@ const firebaseConfig = {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        const email = localStorage.setItem('email',user.email);
+        console.log(email);
         window.location.href = '../todlist.html';
+
       })
       .catch((error) => {
         console.error(error.code, error.message);
@@ -46,11 +49,9 @@ const firebaseConfig = {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    if (username !== '' && password !== '') {
+    if (username !== '' && password.length >= 5) {
         localStorage.setItem('username', username);
-        window.location.href = './todolist.html';
-        let userNameretieved = localStorage.getItem('username');
-        namebox.innerHTML = userNameretieved;
+        window.location.href = './todlist.html';
 
     } else {
         alert('Please enter a valid username and password');

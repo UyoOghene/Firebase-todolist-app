@@ -14,6 +14,11 @@ const inputField = document.querySelector('#input-field');
 const addButton = document.querySelector('#add-button');
 const inputForm = document.querySelector('#add-btn-field');
 const shoppingItemList = document.querySelector('#shopping-item-list');
+const namebox = document.querySelector('#namebox');
+const emailBox = document.querySelector('#emailBox');
+const logoutBtn = document.querySelector('#logoutBtn');
+
+
 
 
 
@@ -37,9 +42,35 @@ const addToCart = (e) => {
 
 inputForm.addEventListener('submit', addToCart);
 
-onValue(shoppingListInDB, function(snapshot){
+const onGoogleLogin = () => {
+    let emailRetrieved = localStorage.getItem('email');
+    if (emailRetrieved) {
+      namebox.innerHTML = emailRetrieved;
+      console.log(emailRetrieved);
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem('email');
+    localStorage.removeItem('username');
+    window.location.href = './index.html';
+  };
+  
+  logoutBtn.addEventListener('click', logout);
+onGoogleLogin();
+
+const onLogin =() => {
     let userNameretieved = localStorage.getItem('username');
-    namebox.innerHTML = userNameretieved;
+    if(userNameretieved){
+        console.log('login');
+        console.log(userNameretieved)
+        namebox.innerHTML = userNameretieved;
+    }
+
+}
+onLogin();
+
+onValue(shoppingListInDB, function(snapshot){
 
     if(snapshot.exists()){
         let items = snapshot.val();
