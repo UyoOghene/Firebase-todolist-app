@@ -32,6 +32,8 @@ body {
     font-size: 15px; 
 }
 
+
+
 #logoutBtn{
     background-color: rgb(215, 58, 100);
     border-radius: 20px;
@@ -54,7 +56,7 @@ body {
 #cart {
     width: 4em;
     height: 4em;
-    border-radius: 20px;
+    border-radius: 50px;
 }
 
 #add-btn-field {
