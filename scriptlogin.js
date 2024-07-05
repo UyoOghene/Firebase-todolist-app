@@ -54,9 +54,7 @@ const firebaseConfig = {
         window.location.href = './todlist.html';
 
     } else {
-        alert('Please enter a valid username and password');
+        alert('your password should be at least 5 letters');
     }
 }
-
-
   loginBtn.addEventListener('click',login);

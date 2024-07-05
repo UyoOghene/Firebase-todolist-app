@@ -9,7 +9,6 @@ const appSettings = {
 const app = initializeApp(appSettings);
 const dataBase = getDatabase(app);
 const shoppingListInDB = ref(dataBase, "shoppingList");
-
 const inputField = document.querySelector('#input-field');
 const addButton = document.querySelector('#add-button');
 const inputForm = document.querySelector('#add-btn-field');
@@ -17,10 +16,6 @@ const shoppingItemList = document.querySelector('#shopping-item-list');
 const namebox = document.querySelector('#namebox');
 const emailBox = document.querySelector('#emailBox');
 const logoutBtn = document.querySelector('#logoutBtn');
-
-
-
-
 
 const addToCart = (e) => {
     e.preventDefault();
@@ -39,7 +34,6 @@ const addToCart = (e) => {
         inputField.value = '';  
     }
 };
-
 inputForm.addEventListener('submit', addToCart);
 
 const onGoogleLogin = () => {
@@ -54,9 +48,8 @@ const onGoogleLogin = () => {
     localStorage.removeItem('email');
     localStorage.removeItem('username');
     window.location.href = './index.html';
-  };
-  
-  logoutBtn.addEventListener('click', logout);
+  }; 
+logoutBtn.addEventListener('click', logout);
 onGoogleLogin();
 
 const onLogin =() => {
@@ -71,15 +64,12 @@ const onLogin =() => {
 onLogin();
 
 onValue(shoppingListInDB, function(snapshot){
-
     if(snapshot.exists()){
         let items = snapshot.val();
         shoppingItemList.innerHTML = '';
-
         const table = document.createElement('table');
         table.setAttribute('border', '1');
         shoppingItemList.appendChild(table);
-
         const headerRow = document.createElement('tr');
         const headers = ['Item', 'User', 'Date'];
         headers.forEach(headerText => {
