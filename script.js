@@ -47,19 +47,17 @@ const onGoogleLogin = () => {
         console.log(emailRetrieved);
         const userRetrieved = localStorage.getItem('userStore');
         let picRetrieved = JSON.parse(userRetrieved).photoURL
-        console.log(picRetrieved)
+        console.log(picRetrieved);
         console.log(JSON.parse(userRetrieved).displayName)
-        imgbox.setAttribute('src', picRetrieved)
-
-
-
-  
+        imgbox.setAttribute('src', picRetrieved);
     }
 };
 
 const logout = () => {
     localStorage.removeItem('email');
     localStorage.removeItem('username');
+    localStorage.removeItem('userStore');
+    let picRetrieved = '';
     window.location.href = './index.html';
 }; 
 
