@@ -14,7 +14,11 @@ const addButton = document.querySelector('#add-button');
 const inputForm = document.querySelector('#add-btn-field');
 const shoppingItemList = document.querySelector('#shopping-item-list');
 const namebox = document.querySelector('#namebox');
+const picturebox = document.querySelector('#namebox');
+const imgbox = document.querySelector('#imgbox');
 const logoutBtn = document.querySelector('#logoutBtn');
+
+
 
 const addToCart = (e) => {
     e.preventDefault();
@@ -41,6 +45,15 @@ const onGoogleLogin = () => {
     if (emailRetrieved) {
         namebox.innerHTML = emailRetrieved;
         console.log(emailRetrieved);
+        const userRetrieved = localStorage.getItem('userStore');
+        let picRetrieved = JSON.parse(userRetrieved).photoURL
+        console.log(picRetrieved)
+        console.log(JSON.parse(userRetrieved).displayName)
+        imgbox.setAttribute('src', picRetrieved)
+
+
+
+  
     }
 };
 

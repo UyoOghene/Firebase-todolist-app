@@ -32,6 +32,10 @@ const firebaseConfig = {
         const user = result.user;
         console.log(user);
         const email = localStorage.setItem('email',user.email);
+        const userStore = localStorage.setItem('userStore',JSON.stringify(result.user));
+        const picture = localStorage.setItem('pic',user.picture);
+        console.log(user.picture);
+        
         console.log(email);
         window.location.href = '../todlist.html';
 

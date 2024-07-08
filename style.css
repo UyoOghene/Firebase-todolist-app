@@ -17,6 +17,11 @@ body {
     background-color: #f0dbec;
 }
 
+#imgbox{
+    height: 3em;
+    width: 3em;
+}
+
 #namebox {
     display: flex;
     text-align: center;
